@@ -36,7 +36,7 @@ class Dog:
         """change the fur color of the dog"""
         old_color= self.fur_color
         self.fur_color = new_color
-        print(f"(self.name) "changed ")
+        print(f"{self.name} changed their fur color from {old_color} to {self.fur_color}")
 
 
 if __name__== "__main__":
