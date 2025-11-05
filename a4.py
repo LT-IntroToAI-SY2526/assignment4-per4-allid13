@@ -11,7 +11,7 @@ class TTTBoard:
     """
     def __init__(self):
             #self.board=["*","*","*","*","*","*","*","*","*"] 
-            self.board=['*']*9
+            self.board=['*'] * 9
     def __str__(self):
         return f"{self.board[0]} {self.board[1]} {self.board[2]}\n{self.board[3]}{self.board[4]}{self.board[5]}\n{self.board[6]}{self.board[7]}{self.board[8]}"
 
@@ -27,19 +27,19 @@ class TTTBoard:
         return False
     
     def has_won(self, player):
-        winning_combinations =[{0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7},{2,5,8}, {0,4,8}, {2,4,6}]
+        winning_combinations =[[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7],[2,5,8], [0,4,8], [2,4,6]]
         for combo in winning_combinations:
-            if self.board[combo[0]]==self.board[combo[1]]==self.board[combo[2]]==player:
+            if self.board[combo[0]] == self.board[combo[1]] == self.board[combo[2]] == player:
                 return True
         return False
     
 
     def game_over(self):
         """check if someone has won or board it full"""
-        return self.has_won("x") or self.has_won("O") or "*" not in self.board
+        return self.has_won("X") or self.has_won("O") or '*' not in self.board
     
     def clear(self):
-        self.board = ["*"]*9
+        self.board = ['*']*9
 
 
 
@@ -125,5 +125,5 @@ if __name__ == "__main__":
 
     print("All tests passed!")
 
- # uncomment to play!
+    # uncomment to play!
     play_tic_tac_toe()
