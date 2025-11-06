@@ -13,7 +13,7 @@ class TTTBoard:
             #self.board=["*","*","*","*","*","*","*","*","*"] 
             self.board=['*'] * 9
     def __str__(self):
-        return f"{self.board[0]} {self.board[1]} {self.board[2]}\n{self.board[3]}{self.board[4]}{self.board[5]}\n{self.board[6]}{self.board[7]}{self.board[8]}"
+        return f"{self.board[0]} {self.board[1]} {self.board[2]}\n{self.board[3]} {self.board[4]} {self.board[5]}\n{self.board[6]} {self.board[7]} {self.board[8]}"
 
     def make_move(self, player, pos):
         """places a move for player at position pos if valid
@@ -46,47 +46,47 @@ class TTTBoard:
     
 
 
-    def play_tic_tac_toe() -> None:
-    
+def play_tic_tac_toe() -> None:
 
-        def is_int(maybe_int: str):
-            """Returns True if val is int, False otherwise
 
-        Args:
-            maybe_int - string to check if it's an int
+    def is_int(maybe_int: str):
+        """Returns True if val is int, False otherwise
 
-        Returns:
-            True if maybe_int is an int, False otherwise
-        """
-            try:
-                int(maybe_int)
-                return True
-            except ValueError:
-                return False
+    Args:
+        maybe_int - string to check if it's an int
 
-        brd = TTTBoard()
-        players = ["X", "O"]
-        turn = 0
+    Returns:
+        True if maybe_int is an int, False otherwise
+    """
+        try:
+            int(maybe_int)
+            return True
+        except ValueError:
+            return False
 
-        while not brd.game_over():
-            print(brd)
-            move: str = input(f"Player {players[turn]} what is your move? ")
+    brd = TTTBoard()
+    players = ["X", "O"]
+    turn = 0
 
-            if not is_int(move):
-                raise ValueError(
-                    f"Given invalid position {move}, position must be integer between 0 and 8 inclusive"
-                )
+    while not brd.game_over():
+        print(brd)
+        move: str = input(f"Player {players[turn]} what is your move? ")
 
-            if brd.make_move(players[turn], int(move)):
-                turn = not turn
+        if not is_int(move):
+            raise ValueError(
+                f"Given invalid position {move}, position must be integer between 0 and 8 inclusive"
+            )
 
-        print(f"\nGame over!\n\n{brd}")
-        if brd.has_won(players[0]):
-            print(f"{players[0]} wins!")
-        elif brd.has_won(players[1]):
-            print(f"{players[1]} wins!")
-        else:
-            print(f"Board full, cat's game!")
+        if brd.make_move(players[turn], int(move)):
+            turn = not turn
+
+    print(f"\nGame over!\n\n{brd}")
+    if brd.has_won(players[0]):
+        print(f"{players[0]} wins!")
+    elif brd.has_won(players[1]):
+        print(f"{players[1]} wins!")
+    else:
+        print(f"Board full, cat's game!")
 
 if __name__ == "__main__":
     # here are some tests. These are not at all exhaustive tests. You will DEFINITELY
